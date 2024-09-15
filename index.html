@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Words by Starting Letter</title>
+    <style>
+        table {
+            width: 50%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        h2 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h2>Words Starting with Vowels and Consonants</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Category</th>
+                <th>Words</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Vowels</td>
+                <td id="vowel-words"></td>
+            </tr>
+            <tr>
+                <td>Consonants</td>
+                <td id="consonant-words"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        const words = ["Apple", "Orange", "Mango", "Banana"];
+        function categorizeWords(wordArray) {
+            const vowels = ['a', 'e', 'i', 'o', 'u'];
+            const vowelWords = [];
+            const consonantWords = [];
+
+            wordArray.forEach(word => {
+                const firstLetter = word.charAt(0).toLowerCase();
+                if (vowels.includes(firstLetter)) {
+                    vowelWords.push(word);
+                } else {
+                    consonantWords.push(word);
+                }
+            });
+
+            return { vowelWords, consonantWords };
+        }
+        const { vowelWords, consonantWords } = categorizeWords(words);
+        function displayWords(vowelWords, consonantWords) {
+            const vowelWordsCell = document.getElementById('vowel-words');
+            const consonantWordsCell = document.getElementById('consonant-words');
+
+            vowelWordsCell.textContent = vowelWords.join(', ');
+            consonantWordsCell.textContent = consonantWords.join(', ');
+        }
+        displayWords(vowelWords, consonantWords);
+    </script>
+</body>
+</html>
